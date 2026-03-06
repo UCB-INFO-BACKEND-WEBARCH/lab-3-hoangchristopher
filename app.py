@@ -114,7 +114,8 @@ class ItemList(MethodView):
         #   Test: {"name": "Ghost", "price": 5, "store_id": 999}
         #         should return 404
         # --------------------------------------------------
-
+        if not store_exists(item_data["store_id"]):
+            abort(404, message="Store not found.")
         # --------------------------------------------------
         # TODO 4: Data Integrity — No duplicate names per store
         #
